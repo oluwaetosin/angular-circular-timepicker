@@ -17,7 +17,8 @@ app.directive('circulartimepicker',[function(){
     replace: true,
     scope:{
       model: '=',
-      format: '='
+      format: '=',
+      initialview: '='
     },
     template: '<div class="datetimepicker">'
             +   '<div class="datetimepicker-modal" ng-click="setState(false)" ng-if="state && config.modal"  style="background-color:{{config.backgroundColor}}"></div>'
@@ -63,11 +64,12 @@ app.directive('circulartimepicker',[function(){
             +         '</div>'
             +       '</div>'
             +     '</div>'
+            +     '<div class="confirm-container"><button ng-click="setState(false)" class="datetimepicker-cancel">Done</button></div>'
             +   '</div>'
             + '</div>',
     link: function(scope,element,attributes){
       scope.state = false;
-      scope.tab = 'time';
+      scope.tab = scope.initialview;
       scope.setTab = function(tab){
         scope.tab = tab;
       }
